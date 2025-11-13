@@ -14,6 +14,7 @@ database.once("connected", () => {
     console.log(`Database Connected ${database.host}`);
 });
 const app = express()
+app.set('query parser', (str) => qs.parse(str));
 app.use(express.json())
 app.use('/api', trainingsRoutes)
 
