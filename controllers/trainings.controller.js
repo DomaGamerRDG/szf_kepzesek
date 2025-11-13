@@ -11,8 +11,8 @@ exports.createTraining = async (req, res, next) => {
 
 exports.getAllTraining = async (req, res, next) => {
     try {
-        const trainings = await Training.find();
-        res.status(200).json({ success: true, data: trainings });
+        const trainings = await Training.find(req.query);
+        res.status(200).json({ success: true, count: trainings.length, data: trainings });
     } catch (error) {
         res.status(500).json({ success: false, msg: error.message });
     }
