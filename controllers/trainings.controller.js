@@ -11,7 +11,11 @@ exports.createTraining = async (req, res, next) => {
 
 exports.getAllTraining = async (req, res, next) => {
     try {
-        const trainings = await Training.find(req.query);
+        let query;
+        let queryStr = JSON.stringify(req.query);
+        queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
+        query = Training.find(JSON.parse(queryStr));
+        const trainings = await query;
         res.status(200).json({ success: true, count: trainings.length, data: trainings });
     } catch (error) {
         res.status(500).json({ success: false, msg: error.message });

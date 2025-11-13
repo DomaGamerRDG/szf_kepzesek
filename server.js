@@ -4,7 +4,6 @@ const trainingsRoutes = require('./routes/trainings.routes')
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 const mongoString = process.env.DATABASE_URL;
-const port = process.env.PORT || 3000;
 mongoose.connect(mongoString);
 const database = mongoose.connection;
 database.on("error", (error) => {
@@ -17,6 +16,6 @@ const app = express()
 app.use(express.json())
 app.use('/api', trainingsRoutes)
 
-app.listen(port, ()=>{
+app.listen(3000, ()=>{
     console.log('Server started')
 })
