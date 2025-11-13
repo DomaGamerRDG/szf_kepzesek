@@ -1,4 +1,5 @@
 const express = require("express");
+const qs = require("qs");
 require("dotenv").config(); // A .env fájlt olvassa
 const trainingsRoutes = require('./routes/trainings.routes')
 const mongoose = require("mongoose");
@@ -16,6 +17,6 @@ const app = express()
 app.use(express.json())
 app.use('/api', trainingsRoutes)
 
-app.listen(3000, ()=>{
-    console.log('Server started')
+app.listen(8000, ()=>{
+    console.log('Server started on port 8000')
 })
