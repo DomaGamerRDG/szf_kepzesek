@@ -3,6 +3,7 @@ const fileUpload = require("express-fileupload");
 const qs = require("qs");
 require("dotenv").config(); // A .env fájlt olvassa
 const trainingsRoutes = require('./routes/trainings.routes')
+const coursesRoutes = require('./routes/courses.routes')
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 const mongoString = process.env.DATABASE_URL;
@@ -20,8 +21,8 @@ app.use(express.json())
 app.use(fileUpload())
 app.use(express.static('public'))
 app.use('/api/trainings', trainingsRoutes)
-app.use("/api/courses", coursesRoutes);
+app.use('/api/courses', coursesRoutes);
 
-app.listen(8000, ()=>{
-    console.log('Server started on port 8000')
+app.listen(3000, ()=>{
+    console.log('Server started on port 3000')
 })
